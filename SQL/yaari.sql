@@ -42,4 +42,16 @@ create table posts (
 
 -- select * from posts;
 
+-- Friendship table
+-- a -> b
+-- a -> c
+-- b -> a
+
+create table 
+  friendships (
+    user_id varchar(64) references users(user_name),
+    friend_id varchar(64) references users(user_name),
+    primary key (user_id, friend_id)
+  );
+
     
