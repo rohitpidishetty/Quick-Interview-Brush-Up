@@ -27,6 +27,19 @@ create table users (
 -- select * from users;
 
 
+create table posts (
+    post_id varchar(64) primary key,
+    post_description text,
+    post_link text,
+    post_location varchar(255),
+    post_date_of_upload int,
+    post_day_of_upload int,
+    post_month_of_upload int,
+    post_year_of_upload int,
+    post_time_of_upload bigint,
+    post_owner varchar(100) references users(user_name)
+);
 
+-- select * from posts;
 
     
