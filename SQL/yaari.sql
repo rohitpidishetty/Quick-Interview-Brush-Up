@@ -55,3 +55,36 @@ create table
   );
 
     
+
+
+-- insert into friendships values ("A", "B"), ("B", "A");
+
+select * 
+  from friendships
+  where user_id = "rohit_pidishetty";
+
+select * from friendships;
+
+select * from posts;
+
+
+create table post_comments (
+  comment_id varchar(256) primary key not null,
+  post_id varchar(256) references posts(post_id),
+  comment_by varchar(256) references users(user_name),
+  comment_data text,
+  comment_time timestamp
+);
+
+
+select * from post_comments;
+
+-- insert into post_comments values ("0x1112", "b1e3f07280ddcac576de1c8da94e6bd0", "yogesh_sai", "Super", now())
+
+create table messages (
+  message_id int primary key not null auto_increment,
+  sender_username varchar(64) references users(user_name),
+  receiver_username varchar(64) references users(user_name),
+  message_payload text not null,
+  messaged_at timestamp
+);
