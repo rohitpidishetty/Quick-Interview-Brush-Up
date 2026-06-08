@@ -54,9 +54,6 @@ create table
     primary key (user_id, friend_id)
   );
 
-    
-
-
 -- insert into friendships values ("A", "B"), ("B", "A");
 
 select * 
@@ -79,7 +76,7 @@ create table post_comments (
 
 select * from post_comments;
 
--- insert into post_comments values ("0x1112", "b1e3f07280ddcac576de1c8da94e6bd0", "yogesh_sai", "Super", now())
+-- insert into post_comments values ("0x1112", "b1e3f07280ddcac576de1c8da94e6bd0", "user_name", "Super", now())
 
 create table messages (
   message_id int primary key not null auto_increment,
@@ -88,3 +85,9 @@ create table messages (
   message_payload text not null,
   messaged_at timestamp
 );
+
+-- Get messages between two chat participants.
+select * 
+  from messages
+  where (sender_username = "rohit_pidishetty" and receiver_username = "user_name")
+  or (sender_username = "user_name" and receiver_username = "rohit_pidishetty");
