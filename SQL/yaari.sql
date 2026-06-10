@@ -1,7 +1,13 @@
+-- DB blueprint for YAARI's NoSQL to SQL migration.
 create database yaari;
 
 use yaari;
 
+
+-- Users table 
+-- +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+-- | user_id | user_name | email_address | email_verified | user_password | profile_picture | background_image | date_of_creation | time_of_creation | bio_status | live_location | notification_id | otp | phone_number | portfolio_link | user_activity | user_location | private_account |
+-- +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 create table users (
     user_id bigint primary key auto_increment,
     user_name varchar(50) not null,
