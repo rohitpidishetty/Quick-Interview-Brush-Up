@@ -91,3 +91,7 @@ select *
   from messages
   where (sender_username = "rohit_pidishetty" and receiver_username = "user_name")
   or (sender_username = "user_name" and receiver_username = "rohit_pidishetty");
+
+
+-- Insert message query
+insert into messages values (?, ?, ?, ?, now());
