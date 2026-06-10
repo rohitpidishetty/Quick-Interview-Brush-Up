@@ -76,7 +76,7 @@ create table post_comments (
 
 select * from post_comments;
 
--- insert into post_comments values ("0x1112", "b1e3f07280ddcac576de1c8da94e6bd0", "user_name", "Super", now())
+insert into post_comments values ("0x1112", "b1e3f07280ddcac576de1c8da94e6bd0", "user_name", "Super", now())
 
 create table messages (
   message_id int primary key not null auto_increment,
