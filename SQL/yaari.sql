@@ -4,7 +4,7 @@ create database yaari;
 use yaari;
 
 
--- Users table 
+-- Users table, this table will be inserted when ever the user creates a new account with unique user_name.
 -- +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 -- | user_id | user_name | email_address | email_verified | user_password | profile_picture | background_image | date_of_creation | time_of_creation | bio_status | live_location | notification_id | otp | phone_number | portfolio_link | user_activity | user_location | private_account |
 -- +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -32,6 +32,11 @@ create table users (
 
 -- select * from users;
 
+-- This table will be inserted when user tries to upload a picture.
+
+-- +--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+-- | post_id | post_description | post_link | post_location | post_date_of_upload | post_month_of_upload | post_year_of_upload | post_time_of_upload | post_owner |
+-- +--------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 create table posts (
     post_id varchar(64) primary key,
@@ -48,19 +53,41 @@ create table posts (
 
 -- select * from posts;
 
+-- This table will be inserted when a user's friend request is accepted.
+
 -- Friendship table
 -- a -> b
 -- a -> c
 -- b -> a
 
+-- +---------------------+
+-- | user_id | friend_id |
+-- +---------------------+
+
 create table 
   friendships (
     user_id varchar(64) references users(user_name),
     friend_id varchar(64) references users(user_name),
+    status bool,
     primary key (user_id, friend_id)
   );
 
 -- insert into friendships values ("A", "B"), ("B", "A");
+
+-- Friend request notification table
+
+-- +-------------------------------------------------------------------+
+-- | request_id | sender_username | receiver_username | request_status |
+-- +-------------------------------------------------------------------+
+
+create table request_notifications (
+    request_id int primary key not null auto_increment,
+    sender_username varchar(64),
+    receiver_username varchar(64),
+    request_status varchar(16) default "pending"
+);
+
+-- (A -> B), User A has sent a friend request to user B, thus user B will be notified with A's request.
 
 select * 
   from friendships
@@ -69,6 +96,12 @@ select *
 select * from friendships;
 
 select * from posts;
+
+-- This table will be inserted when users try to post comments on a specific post.
+
+-- +-----------------------------------------------------------------+
+-- | comment_id | post_id | comment_by | comment_data | comment_time |
+-- +-----------------------------------------------------------------+
 
 
 create table post_comments (
@@ -83,6 +116,12 @@ create table post_comments (
 select * from post_comments;
 
 insert into post_comments values ("0x1112", "b1e3f07280ddcac576de1c8da94e6bd0", "user_name", "Super", now())
+
+-- This table will be inserted when users try to message each other.
+
+-- +----------------------------------------------------------------------------------+
+-- | message_id | sender_username | receiver_username | message_payload | messaged_at |
+-- +----------------------------------------------------------------------------------+
 
 create table messages (
   message_id int primary key not null auto_increment,
