@@ -139,3 +139,18 @@ select *
 
 -- Insert message query
 insert into messages values (?, ?, ?, ?, now());
+
+
+-- +----------------------------------------------------------------+
+-- | hotspot_id | description | image_url | lat | lon | name | type |
+-- +----------------------------------------------------------------+
+
+create table hotspots (
+    hotspot_id int primary key not null,
+    hotpost_description text,
+    image_url text,
+    lat float,
+    lon float,
+    hotspot_name varchar(64),
+    hotspot_type varchar(32)
+);
