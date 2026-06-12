@@ -68,7 +68,6 @@ create table
   friendships (
     user_id varchar(64) references users(user_name),
     friend_id varchar(64) references users(user_name),
-    status bool,
     primary key (user_id, friend_id)
   );
 
