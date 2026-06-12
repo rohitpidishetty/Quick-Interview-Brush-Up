@@ -140,6 +140,7 @@ select *
 -- Insert message query
 insert into messages values (?, ?, ?, ?, now());
 
+-- Hotspots table, admin | subscriber can only insert into this table.
 
 -- +----------------------------------------------------------------+
 -- | hotspot_id | description | image_url | lat | lon | name | type |
@@ -154,3 +155,8 @@ create table hotspots (
     hotspot_name varchar(64),
     hotspot_type varchar(32)
 );
+
+-- Insert hotspot query
+insert into hotspots values ("id", "desc", "url", "lat", "lon", "name", "type");
+
+select * from hotspots;
