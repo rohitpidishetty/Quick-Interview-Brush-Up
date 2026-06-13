@@ -5,9 +5,9 @@ use yaari;
 
 
 -- Users table, this table will be inserted when ever the user creates a new account with unique user_name.
--- +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
--- | user_name | email_address | email_verified | user_password | profile_picture | background_image | date_of_creation | time_of_creation | bio_status | live_location | notification_id | otp | phone_number | portfolio_link | user_activity | user_location | private_account |
--- +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+-- +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+-- | user_name | email_address | email_verified | user_password | profile_picture | background_image | date_of_creation | time_of_creation | bio_status | live_location | notification_id | otp | phone_number | portfolio_link | user_activity | lat | lon | private_account |
+-- +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 create table users (
     user_name varchar(50) not null primary key,
     email_address varchar(255) unique not null,
@@ -24,7 +24,8 @@ create table users (
     phone_number varchar(20),
     portfolio_link varchar(500),
     user_activity varchar(100),
-    user_location varchar(255),
+    lat float,
+    lon float,
     private_account boolean default false
 );
 
