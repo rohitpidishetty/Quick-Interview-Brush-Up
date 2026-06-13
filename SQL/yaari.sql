@@ -5,12 +5,11 @@ use yaari;
 
 
 -- Users table, this table will be inserted when ever the user creates a new account with unique user_name.
--- +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
--- | user_id | user_name | email_address | email_verified | user_password | profile_picture | background_image | date_of_creation | time_of_creation | bio_status | live_location | notification_id | otp | phone_number | portfolio_link | user_activity | user_location | private_account |
--- +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+-- +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+-- | user_name | email_address | email_verified | user_password | profile_picture | background_image | date_of_creation | time_of_creation | bio_status | live_location | notification_id | otp | phone_number | portfolio_link | user_activity | user_location | private_account |
+-- +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 create table users (
-    user_id bigint primary key auto_increment,
-    user_name varchar(50) not null,
+    user_name varchar(50) not null primary key,
     email_address varchar(255) unique not null,
     email_verified boolean default false,
     user_password varchar(255) not null,
