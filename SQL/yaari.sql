@@ -160,3 +160,15 @@ create table hotspots (
 insert into hotspots values ("id", "desc", "url", "lat", "lon", "name", "type");
 
 select * from hotspots;
+
+
+select
+    hotspot_id,
+    hotspot_name,
+    hotspot_type,
+    ST_Distance_Sphere(
+        point(lon, lat),
+        point(:user_lon, :user_lat)
+    ) / 1000 AS distance_km
+from hotspots
+order by distance_km;
