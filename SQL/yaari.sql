@@ -161,14 +161,14 @@ insert into hotspots values ("id", "desc", "url", "lat", "lon", "name", "type");
 
 select * from hotspots;
 
-
-select
+-- Variable list of Hotspots, w.r.t :kms 
+select * from (
+  select
     hotspot_id,
     hotspot_name,
     hotspot_type,
-    ST_Distance_Sphere(
-        point(lon, lat),
-        point(:user_lon, :user_lat)
-    ) / 1000 AS distance_km
-from hotspots
-order by distance_km;
+    ST_Distance_Sphere(point(lon, lat), point(:user_lon, :user_lat)) / 1000 as distance_km
+  from hotspots
+  order by distance_km
+) as hotspot
+where distance_km <= :kms;
